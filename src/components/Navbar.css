@@ -16,6 +16,9 @@
   }
   
 
+  .user-s:first-letter {
+    text-transform:capitalize;
+}
   
   .nav-menu {
     display: grid;

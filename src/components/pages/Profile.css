@@ -1,0 +1,19 @@
+.user-img {
+    border-radius: 50%;
+    width: 100px;
+    height:100px;
+    object-fit: cover;
+   
+  }
+
+  .user-profile{
+      background:#00ABE5;
+      height: 194px;
+      width:100%
+      /* display: flex; */
+  }
+
+  .user-info{
+      display:flex;
+      justify-content: space-around;
+  }

@@ -2,8 +2,9 @@ import axios from "./axios";
 
 
 export const getUserInfoById = async (id) => {
-const rest = await axios.get(`/${id}/`);
-  return rest.data.data;
+// const rest = 
+await axios.get(`/${id}/`);
+//   return rest.data.data;
 };
 
 export const createNewUser = async (id, fields) => {

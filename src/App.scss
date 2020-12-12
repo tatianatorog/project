@@ -25,7 +25,9 @@
 }
 
 
-
+.user-s:first-letter {
+  text-transform:capitalize;
+}
 .profile {
   background-image: url('./images/img-3.jpg');
   background-position: center;
@@ -45,3 +47,9 @@
 }
 
 
+$alpha:#484747;
+$beta:#707070;
+$gamma:#575656;
+$delta:#00ABE5;
+$zeta:#F6F7F9;
+$eta:#FDFEFF;
