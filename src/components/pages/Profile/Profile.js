@@ -1,9 +1,7 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import axios from "../../axios";
-import "./Profile.css";
-// import {getUserInfoById} from "../../request"
-
-import * as request from "../../request";
+import React, { useEffect, useState } from "react";
+import axios from "../../../axios";
+import UserHeader from "../../UserHeader/UserHeader"
+import UserInput from "../../fields/UserInput"
 
 const getUsers = async () => {
   const res = await axios.get(
@@ -70,6 +68,7 @@ const getUsers = async () => {
 
 export default function Profile() {
   const [user, setUser] = useState({});
+  const [state, setstate] = useState(true)
 
   // const getUser = async () => {
   //   const res = await request.getUserInfoById("291db290-3aee-4c21-84c3-528076b0d0b7");
@@ -79,11 +78,10 @@ export default function Profile() {
   // };
   // const capitalizeFirstLetter= (string) => string.charAt(0).toUpperCase() + string.SUBSCRIPTION.slice(1);
 
-  function capitalizeFirstLetter(string) {
-    return string.replace(/^./, string[0].toUpperCase());
-  }
+  const capitalizeFirstLetter = (string) =>  string.replace(/^./, string[0].toUpperCase());
+  
+ const id = "671f7698-9846-4357-8954-0e0028472bc3";
 
-  let id = "671f7698-9846-4357-8954-0e0028472bc3";
   useEffect(() => {
     async function fetchData() {
       const requests = await axios.get(id);
@@ -92,53 +90,83 @@ export default function Profile() {
     fetchData();
   }, [id]);
 
-  function hola(string) {
-    // user.SUBSCRIPTION.includes("world")
-    if (Object.keys(string).length > 0) {
-      console.log("yes");
-    } else {
-      console.log("no");
-    }
-  }
-  console.log(hola(user));
-
-  //  str.slice(0, 9);
 
   // cleanText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
+
+ const getNameLanguage= (language) => {
+    let profileLanguage;
+    switch (language) {
+      case "zh":
+        profileLanguage = "Chinese";
+        break;
+      case "it":
+        profileLanguage = "Italian";
+        break;
+      case "en":
+        profileLanguage = "English";
+        break;
+      case "es":
+        profileLanguage = "Spanish";
+        break;
+      case "fr":
+        profileLanguage = "French";
+        break;
+        case "de":
+        profileLanguage = "German";
+        break;
+      default:
+        profileLanguage = "English";
+    }
+    return profileLanguage;
+  }
+  
+
+const formattingDate= (date)=> date.slice(0, 10).replaceAll("-", "/")
+let condition1 = true
+ 
+let props= { id: 'time', type: 'text', disabled:true};
+let mor= { id: 'time', value:"hola" ,type :"date" };
+
+const hello = ()=>{
+  if(state=== true){
+    props = { id: 'time', type: 'text', disabled:true};
+  }else{
+    mor = { id: 'time', type: 'time' };
+  }
+ 
+}
+// useEffect(() => {
+//   hello()
+  
+//   }
+// , [state])
+
+
+// if (condition1) {
+//    props.value = 'some value';
+// }
+// else {
+//    props.abc = 'some other value';
+// }   
+
+// console.log(getNameLanguage("en"))
 
   return (
     <>
       <div className="user-profile">
         {Object.keys(user).length > 0 ? (
-          <>
-            <h1>{user.banner_message.replace(/<\/?[^>]+(>|$)/g, "")}</h1>
-            <div className="user-info">
-              <div>
-                <img
-                  src={user.user_profile_image}
-                  className="user-img"
-                  alt=""
-                />
-                <h2>Name</h2>
-              </div>
-              <div>
-                <p>
-                  Subscription:{" "}
-                  <span className="user-subscription">
-                    {capitalizeFirstLetter(user.SUBSCRIPTION)}
-                  </span>
-                </p>
-                <p>Creation Date: {user.CREATION_DATE.slice(0, 10)}</p>
-                {user.SUBSCRIPTION === "premium" ? (
-                  <p>
-                    Last payment date: {user.LAST_PAYMENT_DATE.slice(0, 10)}
-                  </p>
-                ) : null}
-              </div>
-            </div>
+            <>
+          <UserHeader user={user}/>
+          {state=== true?(<input {...props} />
+          ):<input {...mor} /> }
+       
+          <UserInput ></UserInput>
           </>
         ) : null}
       </div>
+
+      <button className="btn" onClick={() => setstate(false)}></button>
+    
     </>
   );
 }

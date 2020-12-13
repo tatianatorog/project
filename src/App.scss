@@ -16,7 +16,7 @@
 }
 
 .home {
-  background-image: url('./images/img-1.jpg');
+  background-image: url('./assets/img-1.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@
   text-transform:capitalize;
 }
 .profile {
-  background-image: url('./images/img-3.jpg');
+  background-image: url('./assets/img-3.jpg');
   background-position: center;
   background-size: fill;
   background-repeat: no-repeat;
@@ -38,7 +38,7 @@
 }
 
 .contact-us {
-  background-image: url('./images/img-4.jpg');
+  background-image: url('./assets/img-4.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -53,3 +53,9 @@ $gamma:#575656;
 $delta:#00ABE5;
 $zeta:#F6F7F9;
 $eta:#FDFEFF;
+
+.btn{
+  width:100px;
+  height:100px
+
+}
