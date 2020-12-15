@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../axios";
-import UserHeader from "../../UserHeader/UserHeader"
-import UserInput from "../../fields/UserInput"
+import UserHeader from "../../UserHeader/UserHeader";
+import UserInput from "../../fields/UserInput";
 
 const getUsers = async () => {
   const res = await axios.get(
@@ -68,7 +68,8 @@ const getUsers = async () => {
 
 export default function Profile() {
   const [user, setUser] = useState({});
-  const [state, setstate] = useState(true)
+  const [er, seter] = useState({});
+  const [state, setstate] = useState(false);
 
   // const getUser = async () => {
   //   const res = await request.getUserInfoById("291db290-3aee-4c21-84c3-528076b0d0b7");
@@ -78,95 +79,58 @@ export default function Profile() {
   // };
   // const capitalizeFirstLetter= (string) => string.charAt(0).toUpperCase() + string.SUBSCRIPTION.slice(1);
 
-  const capitalizeFirstLetter = (string) =>  string.replace(/^./, string[0].toUpperCase());
-  
- const id = "671f7698-9846-4357-8954-0e0028472bc3";
+  const capitalizeFirstLetter = (string) =>
+    string.replace(/^./, string[0].toUpperCase());
+
+  const id = "671f7698-9846-4357-8954-0e0028472bc3";
 
   useEffect(() => {
     async function fetchData() {
       const requests = await axios.get(id);
-      return setUser(requests.data.data);
+      // const { ENABLED_FEATURES, ...all } = requests.data.data;
+      // return setUser({ ENABLED_FEATURES, ...all });
+      setUser(requests.data.data)
     }
     fetchData();
   }, [id]);
 
-
   // cleanText = strInputCode.replace(/<\/?[^>]+(>|$)/g, "");
 
- const getNameLanguage= (language) => {
-    let profileLanguage;
-    switch (language) {
-      case "zh":
-        profileLanguage = "Chinese";
-        break;
-      case "it":
-        profileLanguage = "Italian";
-        break;
-      case "en":
-        profileLanguage = "English";
-        break;
-      case "es":
-        profileLanguage = "Spanish";
-        break;
-      case "fr":
-        profileLanguage = "French";
-        break;
-        case "de":
-        profileLanguage = "German";
-        break;
-      default:
-        profileLanguage = "English";
-    }
-    return profileLanguage;
-  }
-  
+  // const hello = () => {
+  // //   let props= { id: 'time', type: 'text', disabled:true};
+  // // let mor= { id: 'time', value:"hola" ,type :"date" };
 
-const formattingDate= (date)=> date.slice(0, 10).replaceAll("-", "/")
-let condition1 = true
- 
-let props= { id: 'time', type: 'text', disabled:true};
-let mor= { id: 'time', value:"hola" ,type :"date" };
+  //   if(state=== true){
+  //     setUs({ id: 'time', type: 'date', });
+  //   }
 
-const hello = ()=>{
-  if(state=== true){
-    props = { id: 'time', type: 'text', disabled:true};
-  }else{
-    mor = { id: 'time', type: 'time' };
-  }
- 
-}
-// useEffect(() => {
-//   hello()
-  
-//   }
-// , [state])
+  // }
+  // useEffect(() => {
+  //   hello()
 
+  //   }
+  // , [state])
 
-// if (condition1) {
-//    props.value = 'some value';
-// }
-// else {
-//    props.abc = 'some other value';
-// }   
+  // if (condition1) {
+  //    props.value = 'some value';
+  // }
+  // else {
+  //    props.abc = 'some other value';
+  // }
 
-// console.log(getNameLanguage("en"))
+  // console.log(getNameLanguage("en"))
 
   return (
     <>
       <div className="user-profile">
-        {Object.keys(user).length > 0 ? (
-            <>
-          <UserHeader user={user}/>
-          {state=== true?(<input {...props} />
-          ):<input {...mor} /> }
-       
-          <UserInput ></UserInput>
+        {Object.entries(user).length > 0 ? (
+          <>
+            <UserHeader user={user} />
+
+            <UserInput user={user}></UserInput>
           </>
         ) : null}
       </div>
-
-      <button className="btn" onClick={() => setstate(false)}></button>
-    
     </>
   );
 }
