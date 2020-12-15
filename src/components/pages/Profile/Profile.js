@@ -2,13 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "../../../axios";
 import UserHeader from "../../UserHeader/UserHeader";
 import UserInput from "../../fields/UserInput";
+import Features from "../../switch/Features"
 
-const getUsers = async () => {
-  const res = await axios.get(
-    "http://localhost:8010/api/v1/customerdata/291db290-3aee-4c21-84c3-528076b0d0b7/"
-  );
-  return res.data.data;
-};
 
 // const onSubmit = async () => {
 //   await axios.post("http://localhost:8010/api/v1/customerdata/", {
@@ -44,7 +39,7 @@ export default function Profile() {
  
 
   
-  const id = "671f7698-9846-4357-8954-0e0028472bc3";
+  const id = "e1005854-3667-479b-9b50-658fe224b3ee";
 
   useEffect(() => {
     async function fetchData() {
@@ -65,6 +60,7 @@ export default function Profile() {
             <UserHeader user={user} />
 
             <UserInput user={user}></UserInput>
+            <Features user={user.ENABLED_FEATURES}></Features>
           </>
         ) : null}
       </div>
