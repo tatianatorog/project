@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { getNameLanguage } from "../../utils/switch";
+import Selector from "../../components/autocomplete/Selector";
+import axios from "../../axios"
 
 export default function UserInput({ user }) {
-  const [state, setstate] = useState("tatianatorog@SpeechGrammarList.com");
   const [states, setstates] = useState(false);
+  const [email, setEmail] = useState(user.user_email);
+  const [timezone, setTimezone] = useState(user.displayed_timezone);
+  const [theme, setTheme] = useState(user.theme_name);
+  const [language, setLanguage] = useState(user.language_code);
+  
+  const changeEmail = (e) => setEmail(e.currentTarget.value);
+  const changeTimezone = (e) => setTimezone(e.currentTarget.value);
+  const changeTheme = (e) => setTheme(e.currentTarget.value);
+  const changelanguage = (e) => setLanguage(e.currentTarget.value);
+ 
+ 
+
+
   // const [ propsInput, setPropsInput] = useState({ id: 'time', type: 'text', disabled:true})
   // const [ propsInput, setPropsInput] = useState({ id: 'time', type: 'text', disabled:true})
 
@@ -61,38 +75,62 @@ export default function UserInput({ user }) {
   // }
 
   //changeInput()
+  const id = "671f7698-9846-4357-8954-0e0028472bc3/";
 
-  //let props= { id: 'time', type: 'text', disabled:true};
-  //let mor= { id: 'time', value:"hola" ,type :"date" };
+ 
+  
+const updateUser = async () => {
+  const res = await axios.put(
+    id,
+    { 
+      data: {
+        ...user,
+         "user_email": email,
+      },
+    }
+  );
+  return res.data;
+};
+ 
+
+ 
+
+
 
   return (
     <>
       {states === false ? (
         <>
           <label htmlFor="email">email</label>
-          <input disabled type="email" name="email" value={user.user_email} />
+          <input disabled type="email" name="email" value={email} />
           <label htmlFor="timeZone">Time Zone</label>
-          <input disabled type="text" name="timeZone" value={user.displayed_timezone} />
+          <input
+            disabled
+            type="text"
+            name="timeZone"
+            value={timezone}
+          />
           <label htmlFor="theme">Theme</label>
-          <input disabled type="text" name="theme" value={user.theme_name} />
+          <input disabled type="text" name="theme" value={theme} />
           <label htmlFor="Language">Language</label>
-          <input disabled type="text" name="theme" value={user.language_code} />
+          <input
+            disabled
+            type="text"
+            name="theme"
+            value={getNameLanguage(language)}
+          />
+
+          <button onClick={() => setstates(true)}>edit</button>
         </>
       ) : (
         <>
-        <label htmlFor="email">email</label>
-          <input type="email" value={user.user_email} />
+          <label htmlFor="email">email </label>
+          <input type="email" value={email} onChange={changeEmail}/>
           <label htmlFor="timeZone">Time Zone</label>
-          <select name="cars" id="cars">
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
-          </select>
+          <Selector ></Selector>
+          <button onClick={updateUser}>save</button>
         </>
       )}
-
-      <button onClick={() => setstates(true)}>hola</button>
     </>
   );
 }

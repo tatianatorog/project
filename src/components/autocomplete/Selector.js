@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Select from 'react-select';
 import dataTimeZone from './timeZones'
 
@@ -8,23 +8,31 @@ import dataTimeZone from './timeZones'
 //   { value: 'vanilla', label: 'Vanilla' },
 // ];
 
-export default class Selector extends React.Component {
-  state = {
-    selectedOption: null,
-  };
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
-  };
-  render() {
-    const { selectedOption } = this.state;
+export default function Selector () {
 
-    return (
+  const [state, setTimezone] = useState({})
+
+ 
+  
+  const changeTimezone = state => {
+    
+    setTimezone({state});
+    console.log(`Option selected:`, state.value);
+  };
+  
+  const { value } = state
+// 
+// console.log(label)
+  return( 
+    
+
+    
       <Select
-        value={selectedOption}
-        onChange={this.handleChange}
+      placeholder="bogota"
+        value={value}
+        onChange={changeTimezone}
         options={dataTimeZone}
       />
     );
-  }
+  
 }

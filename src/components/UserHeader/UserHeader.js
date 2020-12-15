@@ -38,7 +38,6 @@ export default function UserHeader({user}) {
           </>
         ) : null}
       </div>
-     <h1>{getNameLanguage(user.language_code)}</h1>
     </>
   );
 }
