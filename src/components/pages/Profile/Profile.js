@@ -3,6 +3,7 @@ import axios from "../../../axios";
 import UserHeader from "../../UserHeader/UserHeader";
 import UserInput from "../../fields/UserInput";
 import Features from "../../switch/Features"
+import "./Profile.scss"  
 
 
 // const onSubmit = async () => {
@@ -54,7 +55,7 @@ export default function Profile() {
   
   return (
     <>
-      <div className="user-profile">
+      <div className="user-settings">
         {Object.entries(user).length > 0 ? (
           <>
             <UserHeader user={user} />

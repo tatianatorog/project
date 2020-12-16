@@ -28,7 +28,7 @@ export default function Selector ({options}) {
 //  };
   
 const COLORS = {
-  blues:'#00ABE5', 
+  blues:'#00ABE5;', 
 }
 
 
@@ -38,7 +38,7 @@ const COLORS = {
 
     
       <Select
-      placeholder="bogota"
+      placeholder="Rarotonga"
         value={value}
         onChange={changeTimezone}
         options={options}

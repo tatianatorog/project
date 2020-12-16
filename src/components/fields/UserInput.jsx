@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getNameLanguage } from "../../utils/switch";
 import Selector from "./Selector";
-import axios from "../../axios"
-import "./UserInput.scss"
-import dataTimeZone from './timeZones' 
+import axios from "../../axios";
+import "./UserInput.scss";
+import dataTimeZone from './timeZones';
+import themeList from './theme' 
+import languageList from './language'
 
 export default function UserInput({ user }) {
   const [states, setstates] = useState(false);
@@ -109,11 +111,13 @@ const updateUser = async () => {
           <input className="user-input-field" type="email" name="email" value={email} onChange={changeEmail} />
         
          
-          <label htmlFor="timeZone">Time Zone</label>
+          <label className="user-input-label"htmlFor="timeZone">Time Zone</label>
 
           <Selector options={dataTimeZone} ></Selector>
-          <label htmlFor="theme">Theme</label>
-          <Selector options={dataTimeZone} ></Selector>
+          <label className="user-input-label" htmlFor="theme">Theme</label>
+          <Selector options={themeList}></Selector>
+          <label className="user-input-label" htmlFor="Language">Language</label>
+          <Selector options={languageList}></Selector>
 
           {/* <input
             disabled
@@ -125,15 +129,15 @@ const updateUser = async () => {
           
          
           
-          <label htmlFor="Language">Language</label>
+          {/* <label htmlFor="Language">Language</label>
           <input
             disabled
             type="text"
             name="theme"
             value={getNameLanguage(language)}
           />
-       
-          <button onClick={() => setstates(true)}>edit</button>
+        */}
+          {/* <button onClick={() => setstates(true)}>edit</button> */}
         </>
       ) : (
         <>

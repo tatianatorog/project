@@ -1,13 +1,14 @@
-const language = [
+const languageList = [
   { value: "zh", label: "Chinese " },
-  { value: "English", label: "Italian " },
-  { value: "Spanish", label: "es" },
-  { value: "French", label: "fr" },
-  { value: "Spanish", label: "es" },
-  { value: "German", label: "de" },
+  { value: "it", label: "Italian " },
+  { value: "en", label: "English " },
+  { value: "es", label: "Spanish" },
+  { value: "fr", label: "French" },
+  { value: "es", label: "Spanish" },
+  { value: "de", label: "German" },
 ];
 
-export default language;
+export default languageList;
 
 
 
