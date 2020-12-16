@@ -14,9 +14,9 @@ export default function Features({ user }) {
   const [dashboard, setDashboard] = useState(featuresValues[4]);
   const [edxnotes, setedxnotes] = useState(featuresValues[5]);
   const [count, setCount] = useState(filter);
-  const [coun, setCoun] = useState(1);
+ 
 
-  const { CERTIFICATES_INSTRUCTOR_GENERATION } = user;
+
   let hola = true;
   const rango = hola ? count >= 0 && count < 3 : count === 0;
   const limit = hola ? 3 : 1;
@@ -45,62 +45,7 @@ export default function Features({ user }) {
     }
   };
 
-  // };
-
-  // console.log(instructor);
-  console.log(count);
-
-  const Instructor = () => {
-    let hola = 0;
-    setInstructor(!instructor);
-    if (instructor) {
-      hola = hola + 1;
-      //   }else if(!instructor && count ===1){
-      //       console.log("hola")
-      //     }
-      //   else if(instructor && count ===1 ){
-      //     hola=-1
-    }
-    return hola;
-  };
-
-  const changeBackground = () => {
-    setBackground(!background);
-    if (!background) {
-      setCount(count + 1);
-    }
-    if (background && count === 1) {
-      setCount(count - 1);
-    }
-  };
-
-  // let hola=0;
-
-  //  const handleChanges2 =()=>{
-
-  //   if (values===true && value===true){
-  //     hola=2
-  //   }
-  //   else if(values){
-  //     hola=1
-  //   }  else if(value){
-  //     hola=1
-  //   }else {
-  //     hola=0
-  //   }
-  //  return hola
-  // }
-
-  // const handleChanges3 = () => {
-  //   if (instructor || courseware || course || dashboard || edxnotes) {
-  //     setBackground(background);
-  //   } else {
-  //     setBackground(background);
-  //   }
-  // };
-
-  // (handleChanges2())
-  console.log(count);
+  
 
   return (
     <div className="app">

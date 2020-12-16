@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext  } from "react";
 import axios from "../../../axios";
 import UserHeader from "../../UserHeader/UserHeader";
 import UserInput from "../../fields/UserInput";
 import Features from "../../switch/Features"
 import "./Profile.scss"  
+import {AppContext} from "../../useContext"
 
 
 // const onSubmit = async () => {
@@ -36,32 +37,68 @@ import "./Profile.scss"
 
 
 export default function Profile() {
-  const [user, setUser] = useState({});
- 
+  // const [user, setUser] = useState({});
+  const [states, setstates] = useState(false);
+  const {user } = useContext(AppContext);
+  const [email, setEmail] = useState(user?.user_email);
+  
+  // const id = "e1005854-3667-479b-9b50-658fe224b3ee";
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const requests = await axios.get(id);
+  //     // const { user_email, ...all } = requests.data.data;
+  //     // return setUser({ user_email, ...all });
+  //     setUser(requests.data.data)
+      
+  //   }
+  //   fetchData();
+  // }, []);
 
   
-  const id = "e1005854-3667-479b-9b50-658fe224b3ee";
 
-  useEffect(() => {
-    async function fetchData() {
-      const requests = await axios.get(id);
-      // const { ENABLED_FEATURES, ...all } = requests.data.data;
-      // return setUser({ ENABLED_FEATURES, ...all });
-      setUser(requests.data.data)
-    }
-    fetchData();
-  }, [id]);
+  
+//   const [timezone, setTimezone] = useState(user.displayed_timezone);
+//   const [theme, setTheme] = useState(user.theme_name);
+//   const [language, setLanguage] = useState(user.language_code);
+  
+//   const changeEmail = (e) => setEmail(e.currentTarget.value);
+//   const changeTimezone = (e) => setTimezone(e.currentTarget.value);
+//   const changeTheme = (e) => setTheme(e.currentTarget.value);
+//   const changeLanguage = (e) => setLanguage(e.currentTarget.value);
+ 
+// console.log(email)
+  
+  
+
+ 
+
+//   const updateUser = async () => {
+//   const res = await axios.put(
+//     id,
+//     { 
+//       data: {
+//         ...user,
+//          "user_email": email,
+//       },
+//     }
+//   );
+//   return res.data;
+// };
+
+
+
 
   
   return (
     <>
       <div className="user-settings">
-        {Object.entries(user).length > 0 ? (
+        {Object.keys(user).length > 0 ? (
           <>
             <UserHeader user={user} />
-
-            <UserInput user={user}></UserInput>
-            <Features user={user.ENABLED_FEATURES}></Features>
+            <p></p>
+            <UserInput user={user}/>
+            {/* <UserInput email={user?.user_email} changeEmail={changeEmail}  timezone={timezone} changeTimezone={changeTimezone} theme={theme} changeTheme={changeTheme} language={language} changeLanguage={changeLanguage} onClick={updateUser}></UserInput> */}
+            {/* <Features user={user.ENABLED_FEATURES}></Features> */}
           </>
         ) : null}
       </div>
@@ -69,4 +106,4 @@ export default function Profile() {
   );
 }
 
-// replaceAll("-", "/")
+

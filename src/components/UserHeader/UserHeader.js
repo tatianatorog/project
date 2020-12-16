@@ -2,12 +2,11 @@ import React from "react";
 import {
   capitalizeFirstLetter,
   formattingDate,
-  getNameLanguage,
 } from "../../utils/switch";
 import "./userHeader.scss";
 
 export default function UserHeader({ user }) {
-  // console.log(JSON.parse(user.CREATION_DATE))
+
 
   return (
     <>

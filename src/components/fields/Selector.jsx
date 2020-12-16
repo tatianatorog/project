@@ -1,59 +1,36 @@
-import React,{useState} from 'react';
+import React from 'react';
 import Select from 'react-select';
 
-
-
-
-
-
-export default function Selector ({options}) {
-
-  const [state, setTimezone] = useState({})
-
- 
+export default function Selector ({options, timezone, onChange, defaultValue}) {
   
-  const changeTimezone = state => {
-    
-    setTimezone({state});
-    console.log(`Option selected:`, state.value);
-  };
-  
-  const { value } = state
-// 
-
-//  const colourStyles = {
-//  control: styles => ({ ...styles, backgroundColor: 'white' }),
-// /option: styles => ({ ...styles, backgroundColor: 'yellow' }),
-  
-//  };
-  
-const COLORS = {
-  blues:'#00ABE5;', 
-}
+// const COLORS = {
+//   blues:'#00ABE5;', 
+// }
 
 
-// console.log(label)
+console.log(timezone, onChange)
   return( 
     
-
+<>
     
       <Select
-      placeholder="Rarotonga"
-        value={value}
-        onChange={changeTimezone}
+      defaultValue={defaultValue}
+        value={timezone}
+        onChange={onChange}
         options={options}
-        classNamePrefix="hola"
-        
           theme={theme => ({
       ...theme,
      
       colors: {
         ...theme.colors,
-        primary:COLORS.blues,
+        primary:'#00ABE5',
       },
     })}
-        // styles={colourStyles}
+   
       />
+ 
+  </>
     );
+    
   
 }

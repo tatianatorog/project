@@ -19,6 +19,10 @@
   background: linear-gradient(90deg, rgba(0,171,229,1) 35%, rgba(101,106,167,1) 75%, rgba(164,65,128,0.9654236694677871) 100%);
 }
 
+
+.Toastify__toast--info {
+  background-color: rgba(164,65,128,0.9654236694677871);
+}
 .user-info {
   display: flex;
   justify-content: center;
