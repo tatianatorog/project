@@ -104,6 +104,8 @@ export default function Features({ user }) {
 
   return (
     <div className="app">
+      <div className="user-features">
+      <p>Features</p>
       <div className="container-switch">
         <p>Certificates Instructor</p>
         <Switch
@@ -164,6 +166,7 @@ export default function Features({ user }) {
             handleChange(edxnotes, setedxnotes, limit, rango, decrease)
           }
         />
+      </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 @import "src/App.scss";
-
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&display=swap');
 .user-img {
   border-radius: 50%;
   width: 35vw;
@@ -37,9 +37,21 @@
 }
 
 .user-data{
-    font-size: 15px;
-    color:#4A4949;
+    font-size: 14px;
+    color:whitesmoke;
     height:70px;
-    line-height: 1.7em;
-    margin-left:8vw;
+    line-height: 1.8em;
+    margin-left:7vw;
+}
+
+.user-details{
+  color:whitesmoke;
+  font-size:14px;
+  // font-family: 'Barlow', sans-serif;;
+}
+
+.user-title{
+  font-size: 17px;
+  font-weight: '400';
+
 }

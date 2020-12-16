@@ -1,9 +1,12 @@
-import React from "react" ;
-import {capitalizeFirstLetter, formattingDate, getNameLanguage} from "../../utils/switch"
+import React from "react";
+import {
+  capitalizeFirstLetter,
+  formattingDate,
+  getNameLanguage,
+} from "../../utils/switch";
 import "./userHeader.scss";
 
-
-export default function UserHeader({user}) {
+export default function UserHeader({ user }) {
   // console.log(JSON.parse(user.CREATION_DATE))
 
   return (
@@ -11,7 +14,9 @@ export default function UserHeader({user}) {
       <div className="user-profile">
         {Object.keys(user).length > 0 ? (
           <>
-            <h1 className="user-message">{user.banner_message.replace(/<\/?[^>]+(>|$)/g, "")}</h1>
+            <h1 className="user-message">
+              {user.banner_message.replace(/<\/?[^>]+(>|$)/g, "")}
+            </h1>
             <div className="user-info">
               <div>
                 <img
@@ -22,17 +27,18 @@ export default function UserHeader({user}) {
                 {/* <h2>Name</h2> */}
               </div>
               <div className="user-data">
-                <p>
-                  <b> Subscription: {" "}</b>
-                  
-                  <span className="user-subscription">
-                    {capitalizeFirstLetter(user.SUBSCRIPTION)}
-                  </span>
+                <p className="user-details">
+                  <span className="user-title"> Subscription: </span>
+                  {capitalizeFirstLetter(user.SUBSCRIPTION)}
                 </p>
-                <p><b>Creation date:</b> {formattingDate(user.CREATION_DATE)}</p>
-                {user.SUBSCRIPTION === "premium" || user.SUBSCRIPTION === "basic"? (
-                  <p>
-                    Last payment date: {formattingDate(user.LAST_PAYMENT_DATE)}
+                <p className="user-details">
+                  <span className="user-title">Creation date:</span> {formattingDate(user.CREATION_DATE)}
+                </p>
+                {user.SUBSCRIPTION === "premium" ||
+                user.SUBSCRIPTION === "basic" ? (
+                  <p className="user-details">
+                    <span className="user-title">Last payment date: {formattingDate(user.LAST_PAYMENT_DATE)}</span>
+                    
                   </p>
                 ) : null}
               </div>

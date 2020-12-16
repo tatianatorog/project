@@ -1,11 +1,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
 
+$alpha:#484747;
+$beta:#707070;
+$gamma:#575656;
+$delta:#00ABE5;
+$zeta:#F6F7F9;
+$eta:#FDFEFF;
+$tera:hsl(0,0%,80%);
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+
 *{
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  font-family : 'lato', 'sans-serif'
+  font-family : 'lato', 'sans-serif';
+  
 }
 
 .home,
@@ -50,13 +62,6 @@
 }
 
 
-$alpha:#484747;
-$beta:#707070;
-$gamma:#575656;
-$delta:#00ABE5;
-$zeta:#F6F7F9;
-$eta:#FDFEFF;
-$tera:hsl(0,0%,80%);
 
 //hsl(0,0%,80%);
 .btn{
@@ -64,3 +69,5 @@ $tera:hsl(0,0%,80%);
   height:100px
 
 }
+
+// #c3c2c2;

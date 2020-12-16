@@ -105,10 +105,16 @@ const updateUser = async () => {
     <div className="user-form">
       {states === false ? (
         <>
-        
+        {/* <button className= onClick={() => setstates(true)}>edit</button> */}
+        <div className="user-btn-save" onClick={updateUser}>
+        <span className="user-save" >Save</span>
+        <i class="fas fa-user-lock"></i>
+      
+
+        </div>
         
           <label className="user-input-label" htmlFor="email">Email</label>
-          <input className="user-input-field" type="email" name="email" value={email} onChange={changeEmail} />
+          <input className="user-input-field user-email" type="email" name="email" value={email} onChange={changeEmail} />
         
          
           <label className="user-input-label"htmlFor="timeZone">Time Zone</label>
@@ -137,7 +143,7 @@ const updateUser = async () => {
             value={getNameLanguage(language)}
           />
         */}
-          {/* <button onClick={() => setstates(true)}>edit</button> */}
+          
         </>
       ) : (
         <>
