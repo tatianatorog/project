@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getNameLanguage } from "../../utils/switch";
-import Selector from "../../components/autocomplete/Selector";
+import Selector from "./Selector";
 import axios from "../../axios"
+import "./UserInput.scss"
+import dataTimeZone from './timeZones' 
 
 export default function UserInput({ user }) {
   const [states, setstates] = useState(false);
@@ -98,21 +100,31 @@ const updateUser = async () => {
 
 
   return (
-    <div className="user-input">
+    <div className="user-form">
       {states === false ? (
         <>
         
-          <label htmlFor="email">email</label>
-          <input disabled type="email" name="email" value={email} />
+        
+          <label className="user-input-label" htmlFor="email">Email</label>
+          <input className="user-input-field" type="email" name="email" value={email} onChange={changeEmail} />
+        
+         
           <label htmlFor="timeZone">Time Zone</label>
-          <input
+
+          <Selector options={dataTimeZone} ></Selector>
+          <label htmlFor="theme">Theme</label>
+          <Selector options={dataTimeZone} ></Selector>
+
+          {/* <input
             disabled
             type="text"
             name="timeZone"
             value={timezone}
-          />
-          <label htmlFor="theme">Theme</label>
-          <input disabled type="text" name="theme" value={theme} />
+          /> */}
+         
+          
+         
+          
           <label htmlFor="Language">Language</label>
           <input
             disabled
@@ -120,7 +132,7 @@ const updateUser = async () => {
             name="theme"
             value={getNameLanguage(language)}
           />
-
+       
           <button onClick={() => setstates(true)}>edit</button>
         </>
       ) : (
@@ -128,7 +140,7 @@ const updateUser = async () => {
           <label htmlFor="email">email </label>
           <input type="email" value={email} onChange={changeEmail}/>
           <label htmlFor="timeZone">Time Zone</label>
-          <Selector ></Selector>
+          
           <button onClick={updateUser}>save</button>
         </>
       )}
