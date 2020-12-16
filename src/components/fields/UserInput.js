@@ -98,9 +98,10 @@ const updateUser = async () => {
 
 
   return (
-    <>
+    <div className="user-input">
       {states === false ? (
         <>
+        
           <label htmlFor="email">email</label>
           <input disabled type="email" name="email" value={email} />
           <label htmlFor="timeZone">Time Zone</label>
@@ -131,6 +132,6 @@ const updateUser = async () => {
           <button onClick={updateUser}>save</button>
         </>
       )}
-    </>
+    </div>
   );
 }

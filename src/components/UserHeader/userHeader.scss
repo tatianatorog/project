@@ -1,19 +1,44 @@
+@import "src/App.scss";
+
 .user-img {
-    border-radius: 50%;
-    width: 100px;
-    height:100px;
-    object-fit: cover;
-   
-  }
+  border-radius: 50%;
+  width: 35vw;
+  height: 35vw;
+  max-width: 122px;
+  max-height: 122px;
+  object-fit: cover;
+  margin-left:5px;
+}
 
-  .user-profile{
-      background:#00ABE5;
-      height: 194px;
-      width:100%
-      /* display: flex; */
-  }
+.user-profile {
+  background: #00abe5;
+  height: 30vh;
+  max-height:210px;
+  width: 100%;
+  /* display: flex; */
+}
 
-  .user-info{
-      display:flex;
-      justify-content: space-around;
-  }
+.user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.user-message {
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+  padding: 15px 15px 10px 0px;
+  text-transform:uppercase;
+  color:$zeta;
+  margin-left:100px;
+}
+
+.user-data{
+    font-size: 15px;
+    color:#4A4949;
+    height:70px;
+    line-height: 1.5em;
+    margin-left:8vw;
+}

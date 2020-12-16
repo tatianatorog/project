@@ -4,13 +4,14 @@ import "./userHeader.scss";
 
 
 export default function UserHeader({user}) {
+  // console.log(JSON.parse(user.CREATION_DATE))
 
   return (
     <>
       <div className="user-profile">
         {Object.keys(user).length > 0 ? (
           <>
-            <h1>{user.banner_message.replace(/<\/?[^>]+(>|$)/g, "")}</h1>
+            <h1 className="user-message">{user.banner_message.replace(/<\/?[^>]+(>|$)/g, "")}</h1>
             <div className="user-info">
               <div>
                 <img
@@ -18,16 +19,17 @@ export default function UserHeader({user}) {
                   className="user-img"
                   alt=""
                 />
-                <h2>Name</h2>
+                {/* <h2>Name</h2> */}
               </div>
-              <div>
+              <div className="user-data">
                 <p>
-                  Subscription:{" "}
+                  <b> Subscription: {" "}</b>
+                  
                   <span className="user-subscription">
                     {capitalizeFirstLetter(user.SUBSCRIPTION)}
                   </span>
                 </p>
-                <p>Creation Date: {formattingDate(user.CREATION_DATE)}</p>
+                <p><b>Creation date:</b> {formattingDate(user.CREATION_DATE)}</p>
                 {user.SUBSCRIPTION === "premium" || user.SUBSCRIPTION === "basic"? (
                   <p>
                     Last payment date: {formattingDate(user.LAST_PAYMENT_DATE)}
@@ -35,6 +37,7 @@ export default function UserHeader({user}) {
                 ) : null}
               </div>
             </div>
+            {/* <h2>name</h2> */}
           </>
         ) : null}
       </div>
