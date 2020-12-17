@@ -7,7 +7,7 @@ This project is an application where the user can interact with their own data.
 
 ## High prototype
 
-
+<p align="center"> <img src="src/assets/mobile.png" width="600" style="margin:10px"> <img style="margin:10px" src="src/assets/mobile2.png" width="300"> <img style="margin:10px" ></p>
 
 
 
