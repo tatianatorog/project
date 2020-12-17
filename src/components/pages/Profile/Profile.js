@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import UserHeader from "../../UserHeader/UserHeader";
 import UserInput from "../../fields/UserInput";
 import "./Profile.scss";
@@ -13,7 +13,6 @@ export default function Profile() {
         {Object.keys(user).length > 0 ? (
           <>
             <UserHeader user={user} />
-            <p></p>
             <UserInput user={user} />
            
           </>
