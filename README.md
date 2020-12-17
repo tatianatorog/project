@@ -1,17 +1,20 @@
 
 
-## Settings Page
+# Settings Page
 
 This project is an application where the user can interact with their own data.
 
 
-## High prototype
+# High prototype
 
-<p align="center"> <img src="src/assets/mobile.png" width="600" style="margin:10px"> <img style="margin:10px" src="src/assets/mobile2.png" width="300"> <img style="margin:10px" ></p>
+## -Mobile
+<p align="center"> <img src="src/assets/mobile.png" width="300" style="margin:10px"> <img style="margin:10px" src="src/assets/mobile2.png" width="300"> <img style="margin:10px" ></p>
+
+## -Web
+<p align="center"> <img src="src/assets/web.png" width="600" style="margin:10px">
 
 
-
-The user can view the following data
+### The user can view the following data
    
   - Welcome Message
    - Type subscription
@@ -24,7 +27,7 @@ The user can view the following data
    - Theme name
    - Features list
 
-The user will be able to edit the fields
+### The user will be able to edit the fields
 
    - Email
    - Language
@@ -34,7 +37,7 @@ The user will be able to edit the fields
 
 After the user edits the information by pressing the save button, his data will be updated.
 
-##  Technologies
+# Technologies
 
 -- ReactJs
 -- Axios
@@ -44,7 +47,7 @@ After the user edits the information by pressing the save button, his data will 
 -- SCSS
 
 
-## Instructions
+# Instructions
    
    1. Clone the repository
    2. Locate in the project root folder
