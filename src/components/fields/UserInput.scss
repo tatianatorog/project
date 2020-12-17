@@ -55,7 +55,7 @@ input:focus{
 
 
 .user-email{
-   color:hsl(0,0%,50%);
+    color:#484747;
 }
 
 
@@ -73,6 +73,11 @@ input:focus{
       
   }
 
+  .fa-user-lock:hover{
+    color:  rgba(164, 65, 128, 0.89);
+  }
+
   .user-save{
       font-size: 18px;
+      color:#484747;
   }

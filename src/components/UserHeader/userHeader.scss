@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&display=swap');
 .user-img {
   border-radius: 50%;
-  width: 35vw;
-  height: 35vw;
+  width: 34vw;
+  height: 34vw;
   max-width: 122px;
   max-height: 122px;
   object-fit: cover;
@@ -12,6 +12,7 @@
 
 .user-profile {
   // background: #00abe5;
+  box-sizing: border-box;
   height: 30vh;
   max-height:210px;
   width: 100%;
@@ -20,9 +21,6 @@
 }
 
 
-.Toastify__toast--info {
-  background-color: rgba(164,65,128,0.9654236694677871);
-}
 .user-info {
   display: flex;
   justify-content: center;
@@ -37,7 +35,8 @@
   padding: 15px 15px 10px 0px;
   text-transform:uppercase;
   color:$zeta;
-  margin-left:100px;
+  margin-left:70px;
+  text-align:center ;
 }
 
 .user-data{
@@ -45,7 +44,7 @@
     color:whitesmoke;
     height:70px;
     line-height: 1.8em;
-    margin-left:7vw;
+    margin-left:6vw;
 }
 
 .user-details{
@@ -55,7 +54,7 @@
 }
 
 .user-title{
-  font-size: 17px;
+  font-size: 16px;
   font-weight: '400';
 
 }

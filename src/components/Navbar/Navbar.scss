@@ -1,5 +1,6 @@
+@import "src/App.scss";
 .navbar {
-    background:#F6F7F9;
+    background:#d1d6e0;
     height: 60px;
     display: flex;
     justify-content: center;
@@ -38,13 +39,13 @@
   }
   
   .nav-links {
-    color: gray;
+    color:#484747;
     text-decoration: none;
     padding: 0.5rem 1rem;
   }
   
   .nav-links:hover {
-    background-color: #1888ff;
+    background-color:$delta;
     border-radius: 4px;
     transition: all 0.2s ease-out;
   }
@@ -95,7 +96,7 @@
     }
   
     .nav-links:hover {
-      background-color: #1888ff;
+      background-color:$delta;
       border-radius: 0;
     }
   
@@ -131,7 +132,7 @@
       margin: 2rem auto;
       border-radius: 4px;
       width: 80%;
-      background: #1888ff;
+      background:$delta;
       text-decoration: none;
       color: #fff;
       font-size: 1.5rem;
@@ -139,7 +140,7 @@
   
     .nav-links-mobile:hover {
       background: #fff;
-      color: #1888ff;
+      color:$delta;
       transition: 250ms;
     }
   

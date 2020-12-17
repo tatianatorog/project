@@ -4,3 +4,93 @@
 .user-settings{
  background-color: $zeta;
 }
+.user-edit{
+    display:flex;
+    flex-direction: column;
+}
+
+
+@media screen and (min-width: 960px) {
+    .user-settings{
+        display:flex;
+        align-items:center;
+       }
+       .user-form{
+           flex-direction:row
+       }
+       .user-profile{
+        display: flex;
+        flex-direction: column;
+        max-height: 100vh;
+        height: 100vh;
+        width:35vw
+       }
+       .user-message{
+           margin-left: 0px;
+           margin:30px;
+           text-align: center;
+       }
+       .user-info{
+           display:flex;
+           flex-direction:column;
+       }
+
+
+       .user-img{
+           max-width: 130px;
+           max-height: 130px;
+       }
+       .user-data {
+           margin-left: 0px;
+           font-size: 20px;
+           margin-top:30px
+       }
+
+       .container-switch {
+        width:320px;
+       }
+
+       .user-switch{
+           margin-left:40px
+       }
+
+       .user-email{
+        margin-top: 10px;
+        margin-bottom: 20px;
+        height: 45px;
+        
+       }
+        .user-edit{
+            margin: 36px 10px 50px 50px;
+            display:block ;
+        }
+       
+        .user-btn-save{
+            position: absolute;
+             margin-left: 55vw;
+             top:110px;
+        }
+       
+    .fa-user-lock{
+        font-size: 50px;
+    }
+
+    .css-yk16xz-control{
+        height: 45px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+
+    }
+    .css-2b097c-container {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .user-title{
+        font-size: 18px;
+    }
+    .user-details{
+        font-size: 16px;
+       
+    }
+
+}
