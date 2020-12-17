@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 // import Dropdown from "./Dropdown";
-import logo from "../images/logo.png";
-import "./Navbar.css";
+import logo from "../../assets/logo.png";
+import "./Navbar.scss";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -44,7 +44,7 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link
-              to="/products"
+              to="/profile"
               className="nav-links"
               onClick={closeMobileMenu}
             >

@@ -1,0 +1,73 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
+$alpha:#484747;
+$beta:#707070;
+$gamma:#575656;
+$delta:#00ABE5;
+$zeta:#F6F7F9;
+$eta:#FDFEFF;
+$tera:hsl(0,0%,80%);
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family : 'lato', 'sans-serif';
+  
+}
+
+.home,
+.profile,
+.contact-us{
+  display:flex;
+  height:95vh;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 3rem; */
+}
+
+.home {
+  background-image: url('./assets/img-1.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 100px;
+}
+
+
+.user-s:first-letter {
+  text-transform:capitalize;
+}
+.profile {
+  background-image: url('./assets/img-3.jpg');
+  background-position: center;
+  background-size: fill;
+  background-repeat: no-repeat;
+  color: #fff;
+  /* font-size: 100px; */
+}
+
+.contact-us {
+  background-image: url('./assets/img-4.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  font-size: 100px;
+}
+
+
+
+//hsl(0,0%,80%);
+.btn{
+  width:100px;
+  height:100px
+
+}
+
+// #c3c2c2;

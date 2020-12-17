@@ -1,0 +1,78 @@
+@import "src/App.scss";
+
+.user-form{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    padding: 20px;
+}
+.user-input{
+    display:flex;
+    flex-direction:column;
+    height: 50px;
+   
+}
+.user-input-label{
+    font-size: 16px;
+    margin: auto;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color:$alpha;
+}
+.user-input-field{
+    width:100%;
+    font-size:16px;
+    padding: 2px 8px;
+    background-color:$eta;
+    height:40px;
+    border-radius:4px;
+    border: 1px solid $tera
+}
+
+input:focus{
+    border: 2px solid #3FACE6;
+    outline:0;
+    height: 44px;
+    color:gray
+
+}
+
+.css-g1d714-ValueContainer {
+    height:40px;
+   
+}
+
+
+.css-yk16xz-control {
+    height:40px;
+    
+}
+
+.css-2b097c-container {
+    height:40px;
+}
+
+
+.user-email{
+   color:hsl(0,0%,50%);
+}
+
+
+.user-btn-save{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    // position: fixed;
+  }
+
+  .fa-user-lock{
+      font-size: 30px;
+      color:$delta;
+      margin-left:5px
+      
+  }
+
+  .user-save{
+      font-size: 18px;
+  }

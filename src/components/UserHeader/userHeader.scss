@@ -1,0 +1,61 @@
+@import "src/App.scss";
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&display=swap');
+.user-img {
+  border-radius: 50%;
+  width: 35vw;
+  height: 35vw;
+  max-width: 122px;
+  max-height: 122px;
+  object-fit: cover;
+  margin-left:5px;
+}
+
+.user-profile {
+  // background: #00abe5;
+  height: 30vh;
+  max-height:210px;
+  width: 100%;
+  background: rgb(0,171,229);
+  background: linear-gradient(90deg, rgba(0,171,229,1) 35%, rgba(101,106,167,1) 75%, rgba(164,65,128,0.9654236694677871) 100%);
+}
+
+
+.Toastify__toast--info {
+  background-color: rgba(164,65,128,0.9654236694677871);
+}
+.user-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.user-message {
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+  padding: 15px 15px 10px 0px;
+  text-transform:uppercase;
+  color:$zeta;
+  margin-left:100px;
+}
+
+.user-data{
+    font-size: 14px;
+    color:whitesmoke;
+    height:70px;
+    line-height: 1.8em;
+    margin-left:7vw;
+}
+
+.user-details{
+  color:whitesmoke;
+  font-size:14px;
+  // font-family: 'Barlow', sans-serif;;
+}
+
+.user-title{
+  font-size: 17px;
+  font-weight: '400';
+
+}

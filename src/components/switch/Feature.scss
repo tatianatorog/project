@@ -1,0 +1,16 @@
+@import "src/App.scss";
+
+.container-switch{
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+    background-color:$eta;
+    border-bottom: 1px solid $tera;
+    align-items: center;
+    margin-bottom:10px;
+}
+
+.user-features{
+    padding:25px 0px;
+
+}
