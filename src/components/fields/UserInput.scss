@@ -105,3 +105,12 @@ input:focus{
     margin-left:5px;
     color:#484747;
 }
+
+.correct{
+    display: none;
+}
+
+.wrong{
+    color:red;
+    margin-top:-20px
+}

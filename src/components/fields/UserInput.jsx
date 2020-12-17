@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import id from '../../utils/userId'
+import id from "../../utils/userId";
 import Selector from "./Selector";
 import axios from "../../axios";
 import "./UserInput.scss";
@@ -27,23 +27,24 @@ export default function UserInput({ user }) {
   const [dashboard, setDashboard] = useState(featuresValues[4]);
   const [edxnotes, setedxnotes] = useState(featuresValues[5]);
   const [count, setCount] = useState(filter);
+  const [validate, setValidate] = useState(true);
+  const [error, setError] = useState("");
 
-  
- 
-
-const changeEmail = (e) => setEmail(e.currentTarget.value);
+  const changeEmail = (e) => setEmail(e.currentTarget.value);
   const changeTheme = (theme) => setTheme(theme);
   const changeLanguage = (language) => setLanguage(language);
 
-  const validateEmail=(e) =>
-  {
-      let re = /\S+@\S+\.\S+/;
-      if (!re.test(e.currentTarget.value)){
-        const notify = () => toast.error("Please check your email!");
-        return notify()
-      }
-  }
-
+  const validateEmail = (e) => {
+    let re = /\S+@\S+\.\S+/;
+    if (re.test(email)) {
+      setError("");
+      setValidate(true);   
+    } else {
+    
+      setValidate(false);
+      setError("Please check you email");
+    }
+  };
 
   const changeTimezone = (timezone) => {
     setTimezone(timezone);
@@ -91,11 +92,10 @@ const changeEmail = (e) => setEmail(e.currentTarget.value);
     }
   };
 
-  
-
   const notify = () => toast("Changes saved !");
-  const updateUser = async () => {
-    notify();
+  const notifyError = () => toast.error("Please check your email!");
+  const updateUserinfo = async () => {
+   
     const res = await axios.put(id, {
       data: {
         ...user,
@@ -118,13 +118,22 @@ const changeEmail = (e) => setEmail(e.currentTarget.value);
     return res.data.data;
   };
 
+  const updateUser = () => {
+    if (!validate) {
+      notifyError();
+    } else {
+      notify();
+      updateUserinfo();
+    }
+  };
+
   return (
     <div className="user-form">
       <div className="user-btn-save" type="submit" onClick={updateUser}>
-      <span className="user-save">Save</span>
-          <i className="fas fa-user-lock"></i>
-          <ToastContainer />
-        </div>
+        <span className="user-save">Save</span>
+        <i className="fas fa-user-lock"></i>
+        <ToastContainer />
+      </div>
       <div className="user-edit">
         <label className="user-input-label" htmlFor="email">
           Email
@@ -137,6 +146,9 @@ const changeEmail = (e) => setEmail(e.currentTarget.value);
           onChange={changeEmail}
           onMouseOut={validateEmail}
         />
+        {!validate ? (
+          <p className={!validate ? "wrong" : "correct"}>{error}</p>
+        ) : null}
 
         <label className="user-input-label" htmlFor="timeZone">
           Time Zone
@@ -188,8 +200,8 @@ const changeEmail = (e) => setEmail(e.currentTarget.value);
                 handleChange(courseware, setCourseware, limit, rango, decrease)
               }
             />
-             </div>
-            <div className="container-switch">
+          </div>
+          <div className="container-switch">
             <p>Enable Edxnotes</p>
             <Switch
               id="edxnotes"
@@ -208,7 +220,6 @@ const changeEmail = (e) => setEmail(e.currentTarget.value);
                 handleChange(dashboard, setDashboard, limit, rango, decrease)
               }
             />
-         
           </div>
           <div className="container-switch">
             <p>Instructor Background Tasks</p>
@@ -220,7 +231,6 @@ const changeEmail = (e) => setEmail(e.currentTarget.value);
               }
             />
           </div>
-          
 
           <div className="container-switch">
             <p>Enable Course Discovery</p>
@@ -232,8 +242,6 @@ const changeEmail = (e) => setEmail(e.currentTarget.value);
               }
             />
           </div>
-          
-          
         </div>
       </div>
     </div>
