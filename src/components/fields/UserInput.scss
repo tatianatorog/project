@@ -81,3 +81,27 @@ input:focus{
       font-size: 18px;
       color:#484747;
   }
+
+  .container-switch{
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+    background-color:white;
+    border-bottom: 1px solid $tera;
+    align-items: center;
+    margin-bottom:10px;
+    border-radius: 4px;
+    color:hsl(0,0%,20%);
+    padding: 2px 8px;
+}
+
+.user-features{
+    padding:25px 0px;
+
+}
+
+.user-title-feature{
+    margin-bottom: 15px;
+    margin-left:5px;
+    color:#484747;
+}

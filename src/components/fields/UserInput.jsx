@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import id from '../../utils/userId'
 import Selector from "./Selector";
 import axios from "../../axios";
 import "./UserInput.scss";
@@ -36,7 +37,7 @@ const changeEmail = (e) => setEmail(e.currentTarget.value);
 
   const validateEmail=(e) =>
   {
-      var re = /\S+@\S+\.\S+/;
+      let re = /\S+@\S+\.\S+/;
       if (!re.test(e.currentTarget.value)){
         const notify = () => toast.error("Please check your email!");
         return notify()
@@ -90,7 +91,7 @@ const changeEmail = (e) => setEmail(e.currentTarget.value);
     }
   };
 
-  const id = "ab80e12e-2e83-417a-a678-b5a7696b757e/";
+  
 
   const notify = () => toast("Changes saved !");
   const updateUser = async () => {

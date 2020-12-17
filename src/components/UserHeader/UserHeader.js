@@ -1,5 +1,5 @@
 import React from "react";
-import { capitalizeFirstLetter, formattingDate } from "../../utils/switch";
+import { capitalizeFirstLetter, formattingDate } from "../../utils/functions";
 import "./userHeader.scss";
 
 export default function UserHeader({ user }) {
