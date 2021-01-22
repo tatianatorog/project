@@ -11,7 +11,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function UserInput({ user }) {
-
   const featuresValues = Object.values(user.ENABLED_FEATURES);
   const filter = featuresValues.filter((value) => value === true).length;
 
@@ -29,11 +28,9 @@ export default function UserInput({ user }) {
   const [validate, setValidate] = useState(true);
   const [error, setErrorEmail] = useState("");
 
-//---------------------------------------------------//---------------------
+  //---------------------------------------------------//---------------------
 
-  
-
-//Functions to set the current value of the inputs 
+  //Functions to set the current value of the inputs
 
   const changeEmail = (e) => setEmail(e.currentTarget.value);
   const changeTheme = (theme) => setTheme(theme);
@@ -43,15 +40,14 @@ export default function UserInput({ user }) {
     //console.log(`Option selected:`, timezone.value);
   };
 
-// Function that valid that email inserted by the user is correct from a regular expression
+  // Function that valid that email inserted by the user is correct from a regular expression
 
   const validateEmail = () => {
     let regex = /\S+@\S+\.\S+/;
     if (regex.test(email)) {
       setErrorEmail("");
-      setValidate(true);   
+      setValidate(true);
     } else {
-    
       setValidate(false);
       setErrorEmail("Please check you email");
     }
@@ -59,10 +55,16 @@ export default function UserInput({ user }) {
 
   // Functions to define the default value of the the inputs  from the user data
   const defaultTheme = themeList.findIndex((x) => x.value === user.theme_name);
-  const defaultLanguage = languageList.findIndex((x) => x.value === user.language_code);
-  const defaultTimezone = dataTimeZone.findIndex((x) => x.value === user.displayed_timezone);
-//-------------------------Features------____
-  const category = user.SUBSCRIPTION === "basic" ? count >= 0 && count < 3 : count === 0;
+  const defaultLanguage = languageList.findIndex(
+    (x) => x.value === user.language_code
+  );
+  const defaultTimezone = dataTimeZone.findIndex(
+    (x) => x.value === user.displayed_timezone
+  );
+
+  //-------------------------Features--------------------------------//
+  const category =
+    user.SUBSCRIPTION === "basic" ? count >= 0 && count < 3 : count === 0;
   const limit = user.SUBSCRIPTION === "basic" ? 3 : 1;
   const decrease = user.SUBSCRIPTION === "basic" ? count >= 1 : count === 1;
 
@@ -94,10 +96,13 @@ export default function UserInput({ user }) {
     }
   };
 
+  // Popup to notify that the changes were saved or not
   const notify = () => toast("Changes saved !");
   const notifyError = () => toast.error("Please check your email!");
-  const updateUserinfo = async () => {
-   
+
+  //Function to update user data in the api.The axios library is used to make the request //
+
+  const updateUserInfo = async () => {
     const res = await axios.put(id, {
       data: {
         ...user,
@@ -120,14 +125,17 @@ export default function UserInput({ user }) {
     return res.data.data;
   };
 
+  // Function that allows updating the user's information if the email field is valid 
   const updateUser = () => {
     if (!validate) {
       notifyError();
     } else {
       notify();
-      updateUserinfo();
+      updateUserInfo();
     }
   };
+
+  //---------------------------//--------------------------------------------//
 
   return (
     <div className="user-form">
@@ -189,7 +197,13 @@ export default function UserInput({ user }) {
               id="instructor"
               isOn={instructor}
               handleToggle={() =>
-                handleChange(instructor, setInstructor, limit, category, decrease)
+                handleChange(
+                  instructor,
+                  setInstructor,
+                  limit,
+                  category,
+                  decrease
+                )
               }
             />
           </div>
@@ -199,7 +213,13 @@ export default function UserInput({ user }) {
               id="courseware"
               isOn={courseware}
               handleToggle={() =>
-                handleChange(courseware, setCourseware, limit, category, decrease)
+                handleChange(
+                  courseware,
+                  setCourseware,
+                  limit,
+                  category,
+                  decrease
+                )
               }
             />
           </div>
@@ -229,7 +249,13 @@ export default function UserInput({ user }) {
               id="background"
               isOn={background}
               handleToggle={() =>
-                handleChange(background, setBackground, limit, category, decrease)
+                handleChange(
+                  background,
+                  setBackground,
+                  limit,
+                  category,
+                  decrease
+                )
               }
             />
           </div>
