@@ -1,3 +1,5 @@
+// This array has the language information required for the selector 
+
 const languageList = [
   { value: "zh", label: "Chinese " },
   { value: "it", label: "Italian " },

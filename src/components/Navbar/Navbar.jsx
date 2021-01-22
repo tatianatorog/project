@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-
 import { Link } from "react-router-dom";
-// import Dropdown from "./Dropdown";
 import logo from "../../assets/logo.png";
 import "./Navbar.scss";
 

@@ -1,3 +1,5 @@
+// This array has the theme information required for the selector 
+
 const themeList = [
     { value: "Simply Fabulous", label: "Simply Fabulous " },
     { value: "Tropical Island", label: "Tropical Island " },
