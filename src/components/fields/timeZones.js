@@ -1,3 +1,5 @@
+// This array has the time zone information required for the selector 
+
 const dataTimeZone = [{
   "value": "America/Puerto_Rico",
   "label": "Puerto Rico (Atlantic)"

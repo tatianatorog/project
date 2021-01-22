@@ -11,15 +11,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function UserInput({ user }) {
+
+  const featuresValues = Object.values(user.ENABLED_FEATURES);
+  const filter = featuresValues.filter((value) => value === true).length;
+
   const [email, setEmail] = useState(user.user_email);
   const [timezone, setTimezone] = useState({});
   const [theme, setTheme] = useState({});
   const [language, setLanguage] = useState({});
-
-  const featuresValues = Object.values(user.ENABLED_FEATURES);
-  const filter = featuresValues.filter((value) => value === true).length;
-  console.log(filter);
-
   const [instructor, setInstructor] = useState(featuresValues[0]);
   const [background, setBackground] = useState(featuresValues[1]);
   const [courseware, setCourseware] = useState(featuresValues[2]);
@@ -28,47 +27,50 @@ export default function UserInput({ user }) {
   const [edxnotes, setedxnotes] = useState(featuresValues[5]);
   const [count, setCount] = useState(filter);
   const [validate, setValidate] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setErrorEmail] = useState("");
+
+//---------------------------------------------------//---------------------
+
+  
+
+//Functions to set the current value of the inputs 
 
   const changeEmail = (e) => setEmail(e.currentTarget.value);
   const changeTheme = (theme) => setTheme(theme);
   const changeLanguage = (language) => setLanguage(language);
+  const changeTimezone = (timezone) => {
+    setTimezone(timezone);
+    //console.log(`Option selected:`, timezone.value);
+  };
 
-  const validateEmail = (e) => {
-    let re = /\S+@\S+\.\S+/;
-    if (re.test(email)) {
-      setError("");
+// Function that valid that email inserted by the user is correct from a regular expression
+
+  const validateEmail = () => {
+    let regex = /\S+@\S+\.\S+/;
+    if (regex.test(email)) {
+      setErrorEmail("");
       setValidate(true);   
     } else {
     
       setValidate(false);
-      setError("Please check you email");
+      setErrorEmail("Please check you email");
     }
   };
 
-  const changeTimezone = (timezone) => {
-    setTimezone(timezone);
-    console.log(`Option selected:`, timezone.value);
-  };
-
+  // Functions to define the default value of the the inputs  from the user data
   const defaultTheme = themeList.findIndex((x) => x.value === user.theme_name);
-  const defaultLanguage = languageList.findIndex(
-    (x) => x.value === user.language_code
-  );
-  const defaultTimezone = dataTimeZone.findIndex(
-    (x) => x.value === user.displayed_timezone
-  );
-
-  const rango =
-    user.SUBSCRIPTION === "basic" ? count >= 0 && count < 3 : count === 0;
+  const defaultLanguage = languageList.findIndex((x) => x.value === user.language_code);
+  const defaultTimezone = dataTimeZone.findIndex((x) => x.value === user.displayed_timezone);
+//-------------------------Features------____
+  const category = user.SUBSCRIPTION === "basic" ? count >= 0 && count < 3 : count === 0;
   const limit = user.SUBSCRIPTION === "basic" ? 3 : 1;
   const decrease = user.SUBSCRIPTION === "basic" ? count >= 1 : count === 1;
 
-  const handleChangeSwitch = (active, setActive, limit, rango, decrease) => {
+  const handleChangeSwitch = (active, setActive, limit, category, decrease) => {
     if (active && count === limit) {
       setActive(active);
     }
-    if (!active && rango) {
+    if (!active && category) {
       setCount(count + 1);
       setActive(!active);
     }
@@ -80,12 +82,12 @@ export default function UserInput({ user }) {
 
   const handleTogglePremium = (active, setActive) => setActive(!active);
 
-  const handleChange = (active, setActive, limit, rango, decrease) => {
+  const handleChange = (active, setActive, limit, category, decrease) => {
     if (user.SUBSCRIPTION === "free") {
-      return handleChangeSwitch(active, setActive, limit, rango, decrease);
+      return handleChangeSwitch(active, setActive, limit, category, decrease);
     }
     if (user.SUBSCRIPTION === "basic") {
-      return handleChangeSwitch(active, setActive, limit, rango, decrease);
+      return handleChangeSwitch(active, setActive, limit, category, decrease);
     }
     if (user.SUBSCRIPTION === "premium") {
       return handleTogglePremium(active, setActive);
@@ -187,7 +189,7 @@ export default function UserInput({ user }) {
               id="instructor"
               isOn={instructor}
               handleToggle={() =>
-                handleChange(instructor, setInstructor, limit, rango, decrease)
+                handleChange(instructor, setInstructor, limit, category, decrease)
               }
             />
           </div>
@@ -197,7 +199,7 @@ export default function UserInput({ user }) {
               id="courseware"
               isOn={courseware}
               handleToggle={() =>
-                handleChange(courseware, setCourseware, limit, rango, decrease)
+                handleChange(courseware, setCourseware, limit, category, decrease)
               }
             />
           </div>
@@ -207,7 +209,7 @@ export default function UserInput({ user }) {
               id="edxnotes"
               isOn={edxnotes}
               handleToggle={() =>
-                handleChange(edxnotes, setedxnotes, limit, rango, decrease)
+                handleChange(edxnotes, setedxnotes, limit, category, decrease)
               }
             />
           </div>
@@ -217,7 +219,7 @@ export default function UserInput({ user }) {
               id="dashboard"
               isOn={dashboard}
               handleToggle={() =>
-                handleChange(dashboard, setDashboard, limit, rango, decrease)
+                handleChange(dashboard, setDashboard, limit, category, decrease)
               }
             />
           </div>
@@ -227,7 +229,7 @@ export default function UserInput({ user }) {
               id="background"
               isOn={background}
               handleToggle={() =>
-                handleChange(background, setBackground, limit, rango, decrease)
+                handleChange(background, setBackground, limit, category, decrease)
               }
             />
           </div>
@@ -238,7 +240,7 @@ export default function UserInput({ user }) {
               id="course"
               isOn={course}
               handleToggle={() =>
-                handleChange(course, setCourse, limit, rango, decrease)
+                handleChange(course, setCourse, limit, category, decrease)
               }
             />
           </div>
