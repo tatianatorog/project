@@ -16,7 +16,7 @@ const [user, setUser] = useState({});
       
     }
     fetchData();
-  }, [id]);
+  }, []);
 
   return (
     <Provider

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import id from "../../utils/userId";
+import userId from "../../utils/userId";
 import Selector from "./Selector";
 import axios from "../../axios";
 import "./UserInput.scss";
@@ -112,7 +112,7 @@ export default function UserInput({ user }) {
   //Function to update user data in the api.The axios library is used to make the request.
 
   const updateUserInfo = async () => {
-    const res = await axios.put(id, {
+    const res = await axios.put(userId, {
       data: {
         ...user,
         user_email: email,
@@ -171,16 +171,7 @@ export default function UserInput({ user }) {
   ];
 
   // Array of objects that has the values of the props used for the switch components.
-  console.log(
-    instructor,
-    courseware,
-    edxnotes,
-    
-    dashboard,
   
-    background,
-    course,
-    )
   const featuresData = [
     {
       htmlFor: "instructor",
@@ -232,6 +223,15 @@ export default function UserInput({ user }) {
     },
   ];
 
+const userMessage = { 
+    "free":"With your subscription  you can turn on 1 of the features",
+    "basic":"with your subscription level you can choose to change up to 3 features",
+    "premium":"with your subscription level you can choose all the features you want",
+  }
+
+
+
+
   //---------------------------//--------------------------------------------//
 
   return (
@@ -259,13 +259,13 @@ export default function UserInput({ user }) {
         {dataSelector.map((item, i) => (
           <>
             <label
-              key={item.htmlFor}
+              key={item.htmlFor+i}
               className="user-input-label"
               htmlFor={item.htmlFor}
             >
               {item.text}
             </label>
-            <Selector
+            <Selector key={`selector${i}`} id={item.htmlFor}
               defaultValue={item.defaultValue}
               options={item.options}
               onChange={item.onChange}
@@ -275,14 +275,14 @@ export default function UserInput({ user }) {
       </div>
       <div className="user-switch">
         <div className="user-features">
-          <p className="user-title-feature">Features</p>
+        <p className="user-title-feature">{userMessage[user.SUBSCRIPTION]}</p>
           {featuresData.map((item, i) => (
             <>
-              <div key={item.htmlFor} className="container-switch">
-                <label className="user-input-label" htmlFor={item.htmlFor}>
+              <div key={`item${i}`} className="container-switch">
+                <label key={`label${i}`} className="user-input-label" htmlFor={item.htmlFor}>
                   {item.text}
                 </label>
-                <Switch
+                <Switch key={`feature${i}`}
                   id={item.id}
                   isOn={item.isOn}
                   handleToggle={item.handleToggle}
