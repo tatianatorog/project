@@ -8,6 +8,7 @@ export default function UserHeader({ user }) {
       <div className="user-profile">
         {Object.keys(user).length > 0 ? (
           <>
+
             <h1 className="user-message">
               {user.banner_message.replace(/<\/?[^>]+(>|$)/g, "")}
             </h1>

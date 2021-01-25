@@ -12,8 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function UserInput({ user }) {
   const featuresValues = Object.values(user.ENABLED_FEATURES);
-  const filter = featuresValues.filter((value) => value === true).length;
-
+  const featuresLength = featuresValues.filter((value) => value === true).length;
+   console.log(featuresLength)
   const [email, setEmail] = useState(user.user_email);
   const [timezone, setTimezone] = useState({});
   const [theme, setTheme] = useState({});
@@ -24,9 +24,17 @@ export default function UserInput({ user }) {
   const [course, setCourse] = useState(featuresValues[3]);
   const [dashboard, setDashboard] = useState(featuresValues[4]);
   const [edxnotes, setedxnotes] = useState(featuresValues[5]);
-  const [count, setCount] = useState(filter);
+  const [count, setCount] = useState(featuresLength);
   const [validate, setValidate] = useState(true);
   const [error, setErrorEmail] = useState("");
+
+  console.log(
+    instructor,
+    background,
+    courseware,
+    course,
+    dashboard,
+    edxnotes)
 
   //---------------------------------------------------//---------------------
 
@@ -63,44 +71,45 @@ export default function UserInput({ user }) {
   );
 
   //-------------------------Features--------------------------------//
-  const category =
-    user.SUBSCRIPTION === "basic" ? count >= 0 && count < 3 : count === 0;
-  const limit = user.SUBSCRIPTION === "basic" ? 3 : 1;
-  const decrease = user.SUBSCRIPTION === "basic" ? count >= 1 : count === 1;
+  const rank = user.SUBSCRIPTION === "basic" ? count >= 0 && count < 3 : count === 0;
+  const limitValue = user.SUBSCRIPTION === "basic" ? count === 3 : count === 1;
+  // const decreaseValue = user.SUBSCRIPTION === "basic" ? count >= 1 : count === 1;
 
-  const handleChangeSwitch = (active, setActive, limit, category, decrease) => {
-    if (active && count === limit) {
-      setActive(active);
+  const handleChangeSwitch = (active, setActive) => {
+    if (active && limitValue) {
+      setActive(active);   
     }
-    if (!active && category) {
+    if (!active && rank) {
       setCount(count + 1);
       setActive(!active);
+      
     }
-    if (active && decrease) {
-      setCount(count - 1);
+    if (active) {
       setActive(!active);
+      setCount(count - 1);
+    
     }
   };
 
-  const handleTogglePremium = (active, setActive) => setActive(!active);
 
-  const handleChange = (active, setActive, limit, category, decrease) => {
-    if (user.SUBSCRIPTION === "free") {
-      return handleChangeSwitch(active, setActive, limit, category, decrease);
+
+  const handleChange = (active, setActive) => {
+    if (user.SUBSCRIPTION === "free"|| user.SUBSCRIPTION === "basic") {
+      return handleChangeSwitch(active, setActive);
     }
-    if (user.SUBSCRIPTION === "basic") {
-      return handleChangeSwitch(active, setActive, limit, category, decrease);
-    }
+   
     if (user.SUBSCRIPTION === "premium") {
-      return handleTogglePremium(active, setActive);
+      const handleTogglePremium =(active, setActive) => setActive(!active);
+      return  handleTogglePremium(active, setActive)
+
     }
   };
 
-  // Popup to notify that the changes were saved or not
+  // Popup to notify that the changes were saved or not.
   const notify = () => toast("Changes saved !");
   const notifyError = () => toast.error("Please check your email!");
 
-  //Function to update user data in the api.The axios library is used to make the request //
+  //Function to update user data in the api.The axios library is used to make the request.
 
   const updateUserInfo = async () => {
     const res = await axios.put(id, {
@@ -125,7 +134,7 @@ export default function UserInput({ user }) {
     return res.data.data;
   };
 
-  // Function that allows updating the user's information if the email field is valid 
+  // Function that allows updating the user's information if the email field is valid
   const updateUser = () => {
     if (!validate) {
       notifyError();
@@ -134,6 +143,94 @@ export default function UserInput({ user }) {
       updateUserInfo();
     }
   };
+
+  // Array of objects that has the values of the props used for the switch component
+
+  const dataSelector = [
+    {
+      htmlFor: "timeZone",
+      defaultValue: dataTimeZone[defaultTimezone],
+      options: dataTimeZone,
+      onChange: changeTimezone,
+      text: "Time Zone",
+    },
+    {
+      htmlFor: "theme",
+      defaultValue: themeList[defaultTheme],
+      options: themeList,
+      onChange: changeTheme,
+      text: "Theme",
+    },
+    {
+      htmlFor: "Language",
+      defaultValue: languageList[defaultLanguage],
+      options: languageList,
+      onChange: changeLanguage,
+      text: "Language",
+    },
+  ];
+
+  // Array of objects that has the values of the props used for the switch components.
+  console.log(
+    instructor,
+    courseware,
+    edxnotes,
+    
+    dashboard,
+  
+    background,
+    course,
+    )
+  const featuresData = [
+    {
+      htmlFor: "instructor",
+      text: "Certificates Instructor",
+      id: "instructor",
+      isOn: instructor,
+      handleToggle: () =>
+        handleChange(instructor, setInstructor),
+    },
+    {
+      htmlFor: "courseware",
+      text: "Enable Courseware Search",
+      id: "courseware",
+      isOn: courseware,
+      handleToggle: () =>
+        handleChange(courseware, setCourseware),
+    },
+    {
+      htmlFor: "edxnotes",
+      text: "Enable Edxnotes",
+      id: "edxnotes",
+      isOn: edxnotes,
+      handleToggle: () =>
+        handleChange(edxnotes, setedxnotes),
+    },
+    {
+      htmlFor: "dashboard",
+      text: "Enable dashboard",
+      id: "dashboard",
+      isOn: dashboard,
+      handleToggle: () =>
+        handleChange(dashboard, setDashboard),
+    },
+    {
+      htmlFor: "background",
+      text: "Instructor Background Tasks",
+      id: "background",
+      isOn: background,
+      handleToggle: () =>
+        handleChange(background, setBackground),
+    },
+    {
+      htmlFor: "course",
+      text: "Enable Course Discovery",
+      id: "course",
+      isOn: course,
+      handleToggle: () =>
+        handleChange(course, setCourse),
+    },
+  ];
 
   //---------------------------//--------------------------------------------//
 
@@ -159,117 +256,40 @@ export default function UserInput({ user }) {
         {!validate ? (
           <p className={!validate ? "wrong" : "correct"}>{error}</p>
         ) : null}
-
-        <label className="user-input-label" htmlFor="timeZone">
-          Time Zone
-        </label>
-        <Selector
-          defaultValue={dataTimeZone[defaultTimezone]}
-          options={dataTimeZone}
-          initial={timezone}
-          onChange={changeTimezone}
-        ></Selector>
-        <label className="user-input-label" htmlFor="theme">
-          Theme
-        </label>
-        <Selector
-          options={themeList}
-          initial={theme}
-          onChange={changeTheme}
-          defaultValue={themeList[defaultTheme]}
-        ></Selector>
-        <label className="user-input-label" htmlFor="Language">
-          Language
-        </label>
-        <Selector
-          defaultValue={languageList[defaultLanguage]}
-          options={languageList}
-          initial={language}
-          onChange={changeLanguage}
-        ></Selector>
+        {dataSelector.map((item, i) => (
+          <>
+            <label
+              key={item.htmlFor}
+              className="user-input-label"
+              htmlFor={item.htmlFor}
+            >
+              {item.text}
+            </label>
+            <Selector
+              defaultValue={item.defaultValue}
+              options={item.options}
+              onChange={item.onChange}
+            ></Selector>
+          </>
+        ))}
       </div>
       <div className="user-switch">
         <div className="user-features">
           <p className="user-title-feature">Features</p>
-          <div className="container-switch">
-            <p>Certificates Instructor</p>
-            <Switch
-              id="instructor"
-              isOn={instructor}
-              handleToggle={() =>
-                handleChange(
-                  instructor,
-                  setInstructor,
-                  limit,
-                  category,
-                  decrease
-                )
-              }
-            />
-          </div>
-          <div className="container-switch">
-            <p>Enable Courseware Search </p>
-            <Switch
-              id="courseware"
-              isOn={courseware}
-              handleToggle={() =>
-                handleChange(
-                  courseware,
-                  setCourseware,
-                  limit,
-                  category,
-                  decrease
-                )
-              }
-            />
-          </div>
-          <div className="container-switch">
-            <p>Enable Edxnotes</p>
-            <Switch
-              id="edxnotes"
-              isOn={edxnotes}
-              handleToggle={() =>
-                handleChange(edxnotes, setedxnotes, limit, category, decrease)
-              }
-            />
-          </div>
-          <div className="container-switch">
-            <p>Enable dashboard </p>
-            <Switch
-              id="dashboard"
-              isOn={dashboard}
-              handleToggle={() =>
-                handleChange(dashboard, setDashboard, limit, category, decrease)
-              }
-            />
-          </div>
-          <div className="container-switch">
-            <p>Instructor Background Tasks</p>
-            <Switch
-              id="background"
-              isOn={background}
-              handleToggle={() =>
-                handleChange(
-                  background,
-                  setBackground,
-                  limit,
-                  category,
-                  decrease
-                )
-              }
-            />
-          </div>
-
-          <div className="container-switch">
-            <p>Enable Course Discovery</p>
-            <Switch
-              id="course"
-              isOn={course}
-              handleToggle={() =>
-                handleChange(course, setCourse, limit, category, decrease)
-              }
-            />
-          </div>
+          {featuresData.map((item, i) => (
+            <>
+              <div key={item.htmlFor} className="container-switch">
+                <label className="user-input-label" htmlFor={item.htmlFor}>
+                  {item.text}
+                </label>
+                <Switch
+                  id={item.id}
+                  isOn={item.isOn}
+                  handleToggle={item.handleToggle}
+                />
+              </div>
+            </>
+          ))}
         </div>
       </div>
     </div>
