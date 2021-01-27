@@ -7,13 +7,11 @@ import { AppProvider } from './utils/useContext';
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
-    <App />
+      <App />
     </AppProvider>
   </React.StrictMode>,
-   
-    
-  document.getElementById('root')
-);
 
+  document.getElementById('root'),
+);
 
 serviceWorker.unregister();

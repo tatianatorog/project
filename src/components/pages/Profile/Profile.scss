@@ -14,11 +14,11 @@
     .user-settings{
         display:flex;
         align-items:center;
-       }
-       .user-form{
-           flex-direction:row
-       }
-       .user-profile{
+    }
+    .user-form{
+    flex-direction:row
+    }
+    .user-profile{
         display: flex;
         flex-direction: column;
         max-height: 100vh;
@@ -27,58 +27,53 @@
         max-width:350px;
         background-color: $delta;
         background: linear-gradient(90deg, rgba(0,171,229,1) 35%, rgba(0,171,229,1) 100%);
-       }
-       .user-message{
-           margin-left: 0px;
-           margin:30px;
-           text-align: center;
-           font-size: 20px;
-       }
-       .user-info{
-           display:flex;
-           flex-direction:column;
-       }
+    }
+    .user-message{
+        margin-left: 0px;
+        margin:30px;
+        text-align: center;
+        font-size: 20px;
+    }
+    .user-info{
+        display:flex;
+        flex-direction:column;
+    }
 
 
-       .user-img{
-           max-width: 150px;
-           max-height: 150px;
-       }
-       .user-data {
-           margin-left: 0px;
+    .user-img{
+        max-width: 150px;
+        max-height: 150px;
+    }
+    .user-data {
+        margin-left: 0px;
         //    font-size: 20px;
-           margin-top:40px;
-           line-height:2.5rem
-       }
+        margin-top:40px;
+        line-height:2.5rem
+    }
 
-       .container-switch {
-        width:320px;
-       }
 
-       .user-switch{
-           margin-left:1.5vw;
-           width: 28vw;
-       }
+    .user-switch{
+        margin-left:1.5vw;
+        width: 28vw;
+    }
 
-       .user-email{
+    .user-email{
         margin-top: 10px;
         margin-bottom: 20px;
         height: 45px;
         
-       }
+    }
         .user-edit{
             margin: 34px 30px 50px 50px;
             display:block ;
             width: 28vw;
         }
-       
-        .user-btn-save{
+
+        .user-form-btn-save{
             position: absolute;
-             margin-left: 55vw;
-             top:120px;
+            margin-left: 55vw;
+            top:170px;
         }
-       
-    
 
     .css-yk16xz-control{
         height: 45px;
@@ -95,12 +90,20 @@
     }
     .user-details{
         font-size: 18px;
-       
     }
 
     .wrong{
-        color:red;
+        
         margin-top:-20px
     }
 
+    .user-features-text {
+        margin-top: -20px;
+    }
+}
+
+@media screen and (min-width: 1405px){
+.user-features-text{
+    margin-top: -10px;
+}
 }
