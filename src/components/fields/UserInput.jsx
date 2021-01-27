@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import userId from "../../utils/userId";
 import Selector from "./Selector";
 import axios from "../../axios";
@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function UserInput({ user }) {
   const featuresValues = Object.values(user.ENABLED_FEATURES);
   const featuresLength = featuresValues.filter((value) => value === true).length;
-   console.log(featuresLength)
+  console.log(featuresLength)
   const [email, setEmail] = useState(user.user_email);
   const [timezone, setTimezone] = useState({});
   const [theme, setTheme] = useState({});
@@ -40,7 +40,8 @@ export default function UserInput({ user }) {
 
   //Functions to set the current value of the inputs
 
-  const changeEmail = (e) => setEmail(e.currentTarget.value);
+  const inputEmail = useRef(null);
+  const changeEmail = () => setEmail(inputEmail.current.value);
   const changeTheme = (theme) => setTheme(theme);
   const changeLanguage = (language) => setLanguage(language);
   const changeTimezone = (timezone) => {
@@ -249,6 +250,7 @@ const userMessage = {
           className="user-input-field user-email"
           type="email"
           name="email"
+          ref={inputEmail}
           value={email}
           onChange={changeEmail}
           onMouseOut={validateEmail}
