@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from '../axios'
-import id from './userId'
+import userId from './userId'
 
 const AppContext = React.createContext();
 const { Provider, Consumer } = AppContext;
@@ -11,7 +11,7 @@ export default function AppProvider({ children }) {
 
   useEffect(() => {
     async function fetchData() {
-      const requests = await axios.get(id);
+      const requests = await axios.get(userId);
       setUser(requests.data.data)
     }
     fetchData();

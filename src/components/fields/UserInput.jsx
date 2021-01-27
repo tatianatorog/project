@@ -1,19 +1,20 @@
 import React, { useState, useRef } from "react";
 import userId from "../../utils/userId";
-import Selector from "./Selector";
+import Selector from "../Selector/Selector";
 import axios from "../../axios";
-import "./UserInput.scss";
 import dataTimeZone from "./timeZones";
 import themeList from "./theme";
-import languageList from "./language";
+import {languageList } from "./language";
 import Switch from "../../components/switch/Switch";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./UserInput.scss";
 
 export default function UserInput({ user }) {
-  const featuresValues = Object.values(user.ENABLED_FEATURES);
+  //This is going to be the initial value of the counter
+  const featuresValues = Object.values(user.ENABLED_FEATURES)
   const featuresLength = featuresValues.filter((value) => value === true).length;
-  console.log(featuresLength)
+  
   const [email, setEmail] = useState(user.user_email);
   const [timezone, setTimezone] = useState({});
   const [theme, setTheme] = useState({});
@@ -28,14 +29,7 @@ export default function UserInput({ user }) {
   const [validate, setValidate] = useState(true);
   const [error, setErrorEmail] = useState("");
 
-  console.log(
-    instructor,
-    background,
-    courseware,
-    course,
-    dashboard,
-    edxnotes)
-
+  
   //---------------------------------------------------//---------------------
 
   //Functions to set the current value of the inputs
@@ -237,8 +231,8 @@ const userMessage = {
 
   return (
     <div className="user-form">
-      <div className="user-btn-save" type="submit" onClick={updateUser}>
-        <span className="user-save">Save</span>
+      <div className="user-form-btn-save" type="submit" onClick={updateUser}>
+        <span className="user-form-save-span">Save</span>
         <i className="fas fa-user-lock"></i>
         <ToastContainer />
       </div>
@@ -277,7 +271,7 @@ const userMessage = {
       </div>
       <div className="user-switch">
         <div className="user-features">
-        <p className="user-title-feature">{userMessage[user.SUBSCRIPTION]}</p>
+        <p className="user-features-text">{userMessage[user.SUBSCRIPTION]}</p>
           {featuresData.map((item, i) => (
             <>
               <div key={`item${i}`} className="container-switch">

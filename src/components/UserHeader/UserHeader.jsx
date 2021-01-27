@@ -1,9 +1,10 @@
 import React from "react";
-import { capitalizeFirstLetter, formattingDate } from "../../utils/functions";
+import { capitalizeFirstLetter, formattingDate } from "./functions";
 import "./userHeader.scss";
 
 export default function UserHeader({ user }) {
   return (
+
     <>
       <div className="user-profile">
         {Object.keys(user).length > 0 ? (

@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// axios.defaults.crossDomain = true;
 
 /** base url to make request to the user Api */
 const instance = axios.create({

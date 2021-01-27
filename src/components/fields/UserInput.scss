@@ -1,17 +1,34 @@
 @import "src/App.scss";
 
+
 .user-form{
     display:flex;
     flex-direction:column;
     width:100%;
     padding: 20px;
+    &-btn-save{
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    &-save-span{
+        font-size: 18px;
+        color:$alpha;
+    }
 }
-.user-input{
-    display:flex;
-    flex-direction:column;
-    height: 50px;
-   
+
+.fa-user-lock{
+    font-size: 30px;
+    color:$delta;
+    margin-left:5px
+    
 }
+
+.fa-user-lock:hover{
+  color: $beta;
+}
+
+
 .user-input-label{
     font-size: 16px;
     margin: auto;
@@ -20,90 +37,47 @@
     margin-bottom: 5px;
     color:$alpha;
 }
+
 .user-input-field{
     width:100%;
     font-size:16px;
     padding: 2px 8px;
-    background-color:white;
+    background-color:eta;
     height:40px;
     border-radius:4px;
-    border: 1px solid $tera
+    border: 1px solid $theta;
+    color:$alpha;
 }
 
 input:focus{
-    border: 2px solid #3FACE6;
+    border: 2px solid $delta;
     outline:0;
     height: 44px;
-    color:gray
-
+    color:$alpha;
 }
-
-.css-g1d714-ValueContainer {
-    height:40px;
-   
-}
-
-
-.css-yk16xz-control {
-    height:40px;
-    
-}
-
-.css-2b097c-container {
-    height:40px;
-}
-
-
-.user-email{
-    color:#484747;
-}
-
-
-.user-btn-save{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    // position: fixed;
-  }
-
-  .fa-user-lock{
-      font-size: 30px;
-      color:$delta;
-      margin-left:5px
-      
-  }
-
-  .fa-user-lock:hover{
-    color:  rgba(164, 65, 128, 0.89);
-  }
-
-  .user-save{
-      font-size: 18px;
-      color:#484747;
-  }
 
   .container-switch{
     display: flex;
     justify-content: space-between;
     height: 45px;
-    background-color:white;
-    border-bottom: 1px solid $tera;
+    background-color:$eta;
+    border-bottom: 1px solid $theta;
     align-items: center;
     margin-bottom:10px;
     border-radius: 4px;
-    color:hsl(0,0%,20%);
+    color:$alpha;
     padding: 2px 8px;
 }
 
 .user-features{
     padding:25px 0px;
-
-}
-
-.user-title-feature{
-    margin-bottom: 15px;
-    margin-left:5px;
-    color:#484747;
+    &-text{
+        margin-bottom: 20px;
+        margin-top:10px;
+        margin-left:5px;
+        color:$alpha;
+        
+    }
 }
 
 .correct{
@@ -111,6 +85,6 @@ input:focus{
 }
 
 .wrong{
-   color:red;
+   color:$beta;
    margin-top:5px;
 }

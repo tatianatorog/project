@@ -1,15 +1,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 
 $alpha:#484747;
-$beta:#707070;
-$gamma:#575656;
+$beta:rgba(164, 65, 128, 0.89);
+$gamma:#d1d6e0;
 $delta:#00ABE5;
 $zeta:#F6F7F9;
-$eta:#FDFEFF;
-$tera:hsl(0,0%,80%);
+$eta:#FFFFFF;
+$theta:hsl(0,0%,80%);
+// $iota:
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
 
 
 *{
@@ -39,12 +40,6 @@ $tera:hsl(0,0%,80%);
   font-size: 70px;
 }
 
-
-.user-s:first-letter {
-  text-transform:capitalize;
-}
-
-
 .contact-us {
   background-image: url('./assets/img-2.jpg');
   background-position: center;
@@ -55,12 +50,9 @@ $tera:hsl(0,0%,80%);
 }
 
 
-
-//hsl(0,0%,80%);
 .btn{
   width:100px;
   height:100px
 
 }
 
-// #c3c2c2;
